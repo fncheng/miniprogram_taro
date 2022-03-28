@@ -5,9 +5,15 @@ import { AtButton, AtInput } from 'taro-ui'
 import "taro-ui/dist/style/components/button.scss" // 按需引入
 import './index.scss'
 
-export default class Index extends Component {
-  constructor() {
-    super(...arguments)
+interface IProps {
+
+}
+interface IState {
+  name: any
+}
+export default class Index extends Component<IProps,IState> {
+  constructor(props) {
+    super(props)
     this.state = {
       name: ''
     }
@@ -24,6 +30,7 @@ export default class Index extends Component {
   componentDidHide () { }
 
   render () {
+    console.log(this.state)
     return (
       <>
       <View className='index'>
@@ -39,10 +46,18 @@ export default class Index extends Component {
         >确认</AtButton>
       </View>
       <View>
-        <AtInput value={this.state.name} placeholder='请输入姓名' onChange={(e)=>{
-          console.log(e);
+        <AtInput name='name' title='姓名' type='text' value={this.state.name} placeholder='请输入姓名' onChange={(value)=>{ 
+          this.setState({
+            name: value
+          })
         }}
         ></AtInput>
+        <View>{this.state.name}</View>
+        <AtButton onClick={()=>{
+          console.log(this.state.name);
+          
+        }}
+        >Click me</AtButton>
       </View>
       </>
     )

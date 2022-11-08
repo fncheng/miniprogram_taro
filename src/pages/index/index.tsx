@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { View, Text } from '@tarojs/components'
 import { AtButton, AtInput } from 'taro-ui'
 
@@ -9,7 +9,7 @@ interface IProps {
 
 }
 interface IState {
-  name: any
+  name: string
 }
 export default class Index extends Component<IProps,IState> {
   constructor(props) {
@@ -48,14 +48,16 @@ export default class Index extends Component<IProps,IState> {
       <View>
         <AtInput name='name' title='姓名' type='text' value={this.state.name} placeholder='请输入姓名' onChange={(value)=>{ 
           this.setState({
-            name: value
+            name: 'ls'
           })
         }}
         ></AtInput>
         <View>{this.state.name}</View>
         <AtButton onClick={()=>{
           console.log(this.state.name);
-          
+          this.setState({
+            name: 'zs'
+          })
         }}
         >Click me</AtButton>
       </View>
